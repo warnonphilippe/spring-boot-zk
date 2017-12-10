@@ -1,4 +1,4 @@
-package ar.gfritz;
+package be.civadis.stc.web;
 
 import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.NotifyChange;

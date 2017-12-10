@@ -1,8 +1,9 @@
-package ar.gfritz;
+package be.civadis.stc.web;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import be.civadis.stc.web.servlet.StcRestServlet;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.context.embedded.ServletRegistrationBean;
@@ -16,7 +17,7 @@ import org.zkoss.zk.ui.http.DHtmlLayoutServlet;
 import org.zkoss.zk.ui.http.HttpSessionListener;
 
 @Configuration
-@ComponentScan("ar.gfritz")
+@ComponentScan("be.civadis.stc")
 @EnableAutoConfiguration
 public class Application {
 
@@ -61,5 +62,16 @@ public class Application {
 	public HttpSessionListener httpSessionListener() {
 		return new HttpSessionListener();
 	}
+
+	@Bean
+	public ServletRegistrationBean restletServlet() {
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("org.restlet.application", "be.civadis.stc.web.rest.application.StcRestApplication");
+		ServletRegistrationBean reg = new ServletRegistrationBean(new StcRestServlet(), "/api/*");
+		reg.setLoadOnStartup(3);
+		reg.setInitParameters(params);
+		return reg;
+	}
+
 
 }

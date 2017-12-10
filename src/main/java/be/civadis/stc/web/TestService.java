@@ -1,4 +1,4 @@
-package ar.gfritz;
+package be.civadis.stc.web;
 
 import org.springframework.stereotype.Service;
 

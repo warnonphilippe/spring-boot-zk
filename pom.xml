@@ -3,13 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>ar.gfritz</groupId>
-	<artifactId>boot.zk</artifactId>
+	<groupId>be.civadis.stc</groupId>
+	<artifactId>stc.web</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>boot.zk</name>
-	<description>boot zk</description>
+	<name>stc.web</name>
+	<description>stc.web</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -116,14 +116,46 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+
+		<!-- REST -->
+		<dependency>
+			<groupId>org.restlet.jee</groupId>
+			<artifactId>org.restlet</artifactId>
+			<version>${org.restlet.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.restlet.jee</groupId>
+			<artifactId>org.restlet.ext.servlet</artifactId>
+			<version>${org.restlet.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.restlet.jee</groupId>
+			<artifactId>org.restlet.ext.jackson</artifactId>
+			<version>${org.restlet.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.restlet.jee</groupId>
+			<artifactId>org.restlet.ext.fileupload</artifactId>
+			<version>${org.restlet.version}</version>
+			<exclusions>
+				<!-- dependance plus recente chargee ci-dessous -->
+				<exclusion>
+					<groupId>commons-fileupload</groupId>
+					<artifactId>commons-fileupload</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- FIN DE: REST -->
+
 	</dependencies>
 
 	<properties>
 		<project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
-		<start-class>ar.gfritz.Application</start-class>
+		<start-class>be.civadis.stc.web.Application</start-class>
 		<java.version>1.8</java.version>
 		<zk.version>8.0.0</zk.version>
 		<zk-spring.version>3.1.1</zk-spring.version>
+		<org.restlet.version>2.3.0</org.restlet.version>
 	</properties>
 
 	<build>
@@ -149,6 +181,11 @@
 		<repository>
 			<id>ZK Maven</id>
 			<url>http://mavensync.zkoss.org/maven2</url>
+		</repository>
+		<repository>
+			<id>maven-restlet</id>
+			<name>Public online Restlet repository</name>
+			<url>http://maven.restlet.org</url>
 		</repository>
 	</repositories>
 </project>

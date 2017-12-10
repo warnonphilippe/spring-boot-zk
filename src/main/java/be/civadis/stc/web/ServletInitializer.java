@@ -1,4 +1,4 @@
-package ar.gfritz;
+package be.civadis.stc.web;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
